@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: relative;
+        }
+        div::after{
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        #bl{
+            border: 10px solid blue;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #bl::after{
+            border: 10px solid blue;
+            border-bottom-color: transparent;
+        }
+        #ye{
+            border: 10px solid yellow;
+            position: absolute;
+            left: 230px;
+            top: 0;
+        }
+        #ye::after{
+            border: 10px solid yellow;
+            border-left-color: transparent;
+        }
+        #red{
+            border: 10px solid red;
+            position: absolute;
+            left: 460px;
+            top: 0;
+        }
+        #red::after{
+            border: 10px solid red;
+            border-left-color: transparent;
+        }
+        #gre{
+            border: 10px solid green;
+            position: absolute;
+            left: 110px;
+            top: 110px;
+        }
+        #bla{
+            border: 10px solid #000;
+            position: absolute;
+            left: 340px;
+            top: 110px;
+        }
+        #bla::after{
+            border: 10px solid #000;
+            border-top-color: transparent;
+        }
+    </style>
+</head>
+<body>
+<div id="bl"></div>
+<div id="ye"></div>
+<div id="red"></div>
+<div id="gre"></div>
+<div id="bla"></div>
+</body>
+</html>
