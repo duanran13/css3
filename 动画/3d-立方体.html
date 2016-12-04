@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>立方体</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000;
+            -webkit-perspective: 800px;
+        }
+        #container{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            -webkit-transform-style: preserve-3d; /*container也得具有3D效果，所以在父元素上改变视角，让container保持3D效果*/
+            position: relative;
+            animation: run 2s linear infinite;/*名 时间 方式 循序次数*/
+        }
+        @-webkit-keyframes run {
+            0%{
+
+            }
+            100%{
+                -webkit-transform: rotatey(360deg);
+            }
+        }
+        #container div{
+            width: 200px;
+            height: 200px;
+            background: RGBA(255,255,255,0.6);/*红色，绿色，蓝色，透明度*/
+            font-size: 80px;
+            text-align: center;
+            line-height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+        }
+        #one{
+            -webkit-transform: rotatex(90deg) translatez(100px);
+        }
+        #two{
+            -webkit-transform: rotatey(90deg) translatez(100px);
+        }
+        #three{
+            -webkit-transform: translatez(100px);
+            z-index: 1;
+        }
+        #four{
+            -webkit-transform: rotatey(-90deg) translatez(100px);
+        }
+        #five{
+            -webkit-transform: rotatey(180deg)translatez(100px);
+        }
+        #six{
+            -webkit-transform: rotatex(-90deg) translatez(100px);
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="one">1</div>
+    <div id="two">2</div>
+    <div id="three">3</div>
+    <div id="four">4</div>
+    <div id="five">5</div>
+    <div id="six">6</div>
+</div>
+</body>
+</html>
