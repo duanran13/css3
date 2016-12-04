@@ -27,6 +27,8 @@
             left: 99px;
             top: 0;
             -webkit-transform-origin: center 100px;/*绕着圆心旋转*/
+            -moz-transform-origin: center 100px;
+            transform-origin: center 100px;
         }
         li:nth-child(5n+1){
             height: 8px;
@@ -93,7 +95,7 @@
         var aHour = data.getHours()+aMinute/60;
         oSecond.style.WebkitTransform = 'rotate('+aSecond*6+'deg)';
         oMinute.style.webkitTransform = 'rotate('+aMinute*6+'deg)';
-        oHour.style.webkitTransform = 'rotate('+aHour*30+'deg)';
+        oHour.style.webkitTransform = 'rotate('+aHour*30+'deg)';//字符串拼接前面是一部分后面是一部分
     };
     run();//防止刷新的时候指针都从初始位置开始
     setInterval(function(){
