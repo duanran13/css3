@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #stadge{
+            width: 1000px;
+            height: 300px;
+            background: #cccccc;
+            box-shadow: 0 0 3px 3px RGBA(0,0,0,0.6);
+            margin: 50px auto;
+            overflow: hidden;
+            -webkit-perspective: 800px;
+            -webkit-perspective-origin: center -30%;
+        }
+        #container{
+            width: 128px;
+            height: 100px;
+            margin: 50px auto;
+            position: relative;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transition: transform 1s ease;
+        }
+        #container img{
+            width: 128px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            -webkit-transition: transform 1s ease;
+        }
+    </style>
+</head>
+<body>
+<div id="stadge">
+    <div id="container">
+
+    </div>
+</div>
+<script>
+    var oContainer = document.getElementById("container");
+    var idx = 0;
+    var index = 9;
+    var x=64/Math.tan(20*(Math.PI/180))+20;
+    var count = 0;
+    for(var i = 0;i<9;i++){
+        var oImg = new  Image();
+        oImg.onload = function(){
+            count++;
+            if(count == 9){
+                var aImg = oContainer.getElementsByTagName("img");
+                for(var i = 0;i<9;i++){
+                    setTimeout(function(){
+                        index--;
+                        aImg[index].style.WebkitTransform = "rotateY("+(-index*40)+"deg) translateZ("+x+"px)";
+                    },100*(i+1));
+                }
+            }
+        };
+        oImg.src = ''+(i+1)+'.jpg';//要写在onload的后面
+        oContainer.appendChild(oImg);
+    }
+    oContainer.onclick = function(){
+        idx++;
+        oContainer.style.transform = "rotateY("+40*idx+"deg)";
+    };
+
+    //闭包
+    //    for(var i = 0;i<9;i++){
+    //        (function(index){
+    //            setTimeout(function(){
+    //                var j = 8-index;
+    //                aImg[j].style.WebkitTransform = "rotateY("+(-j*40)+"deg) translateZ("+x+"px)";
+    //            },100*(i+1));
+    //
+    //        })(i)
+    //    }
+
+</script>
+</body>
+</html>

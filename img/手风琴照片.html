@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>手风琴</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 800px;
+            height: 300px;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+        #content{
+            position: relative;
+        }
+        li{
+            position: absolute;
+            top: 0;
+            -webkit-transition: transform 1s ease;
+        }
+        img{
+            width: 600px;
+            height: 300px;
+        }
+        span{
+            width: 800px;
+            height: 30px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: RGBA(0, 0, 0, 0.5);
+            color: #fff;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="content">
+        <li><img src="1.jpg"/><span>01</span></li>
+        <li><img src="2.jpg"/><span>02</span></li>
+        <li><img src="3.jpg"/><span>03</span></li>
+        <li><img src="4.jpg"/><span>04</span></li>
+        <li><img src="5.jpg"/><span>05</span></li>
+    </ul>
+</div>
+<script>
+    var oContent = document.getElementById("content");
+    var aLi = oContent.getElementsByTagName("li");
+    for(var i = 0;i<aLi.length;i++){
+        aLi[i].style.left = 160*i+"px";
+        aLi[i].index = i;
+        aLi[i].onmouseover = function(){
+            var now = this.index;
+            for(var i = 0;i<aLi.length;i++){
+                if(i<=now){
+                    var x = 50*i-160*i;
+                    aLi[i].style.WebkitTransform = "translateX("+x+"px)";
+                }
+                else{
+                    var y = (800-(aLi.length-i)*50)-160*i;
+                    aLi[i].style.WebkitTransform = "translateX("+y+"px)";
+                }
+            }
+
+        };
+        aLi[i].onmouseout = function(){
+            for(var i = 0;i<aLi.length;i++){
+                aLi[i].style.WebkitTransform = "";
+            }
+        };
+    }
+
+</script>
+</body>
+</html>
