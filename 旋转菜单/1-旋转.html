@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转照片</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 50px;
+            height: 50px;
+            /*background: #ff0000;*/
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        #container img{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            -webkit-transition: transform 1s ease;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <img class="menu" src="img旋转/1.png" alt=""/>
+    <img class="menu" src="img旋转/2.png" alt=""/>
+    <img class="menu" src="img旋转/3.png" alt=""/>
+    <img class="menu" src="img旋转/4.png" alt=""/>
+    <img class="menu" src="img旋转/5.png" alt=""/>
+    <img id="home" src="img旋转/0.png" alt=""/>
+</div>
+<script>
+    var oContainer = document.getElementById("container");
+    var oHome = document.getElementById("home");
+    var aImg = document.getElementsByClassName("menu");
+    var bFlag = false;
+    var change;
+    oHome.onclick = function(){
+        if(!bFlag){
+            for(var i = 0;i<aImg.length;i++){
+                var x = -180*Math.sin(22.5*i*Math.PI/180);
+                var y = -180*Math.cos(22.5*i*Math.PI/180);
+                aImg[i].style.WebkitTransform = "translate("+x+"px,"+y+"px) rotate(360deg)";
+                aImg[i].onclick = function(){
+                    var _this = this;
+                    _this.style.width = 100+"px";
+                    _this.style.height = 100+"px";
+                    setTimeout(function(){
+                        _this.style.width = 50+"px";
+                        _this.style.height = 50+"px";
+                    },100)
+                };
+            }
+            this.style.WebkitTransform = "rotate(360deg)";
+        }
+        else{
+            for(var i = 0;i<aImg.length;i++){
+                aImg[i].style.WebkitTransform = "translate(0px,0px) rotate(0deg)";
+            }
+            this.style.WebkitTransform = "rotate(0deg)";
+        }
+        bFlag = !bFlag;// 让bFlag一直等于他的非好让按钮一直可以继续下去
+    };
+
+</script>
+</body>
+</html>
