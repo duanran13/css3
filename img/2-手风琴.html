@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>shoufeng</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 800px;
+            height: 300px;
+            margin: 50px  auto;
+            overflow: hidden;
+        }
+        #content li{
+            width: 160px;
+            height: 300px;
+            float: left;
+            position: relative;
+            -webkit-transition: width 1s ease;
+        }
+        #content img{
+            width: 600px;
+            height: 300px;
+        }
+        #content span{
+            width: 600px;
+            height: 30px;
+            background: RGBA(0, 0, 0, 0.5);
+            color: #fff;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            line-height: 30px;
+        }
+        #content:hover li{
+            width: 50px;
+        }
+        #content li:hover{
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="content">
+        <li><img src="1.jpg"/><span>01</span></li>
+        <li><img src="2.jpg"/><span>02</span></li>
+        <li><img src="3.jpg"/><span>03</span></li>
+        <li><img src="4.jpg"/><span>04</span></li>
+        <li><img src="5.jpg"/><span>05</span></li>
+    </ul>
+</div>
+</body>
+</html>
